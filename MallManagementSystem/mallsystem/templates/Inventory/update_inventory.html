@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Inventory</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .page-container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .header, .footer {
+            background-color: #2e86de;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .form-container {
+            max-width: 400px;
+            width: 100%;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .form-container h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form button {
+            background-color: #2e86de;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        form button:hover {
+            background-color: #2271b1;
+        }
+
+        a {
+            color: #2e86de;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #2271b1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-container">
+        <div class="header">
+            Shopping Mall Management System
+        </div>
+
+        <div class="content">
+            <div class="form-container">
+                <h1>Update Inventory</h1>
+                <form method="post">
+                    {% csrf_token %}
+                    <h2>Product Details</h2>
+                    {{ product_form.as_p }}
+                    
+                    <h2>Inventory Details</h2>
+                    {{ inventory_form.as_p }}
+                    
+                    <button type="submit">Update</button>
+                </form>
+                <a href="{% url 'inventory_interface' %}">Back to Main Interface</a>
+            </div>
+        </div>
+
+        <div class="footer">
+            &copy; 2023 Shopping Mall Management System. All rights reserved.
+        </div>
+    </div>
+</body>
+</html>

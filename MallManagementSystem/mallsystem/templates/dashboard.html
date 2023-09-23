@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Dashboard</title>
+    <style>
+        /* Enhanced CSS for Dashboard */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .management-links {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .management-link {
+            background-color: #007BFF;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .management-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h1>Shopping Mall Management System</h1>
+        </div>
+        <div class="management-links">
+            <a href="{% url 'store_management' %}" class="management-link">Store Management</a>
+            <a href="{% url 'inventory_interface' %}" class="management-link">Inventory Management</a>
+            <a href="{% url 'sales_interface' %}" class="management-link">Sales Management</a>
+            <a href="{% url 'customer_management' %}" class="management-link">Customer Management</a>
+        </div>
+    </div>
+</body>
+
+</html>

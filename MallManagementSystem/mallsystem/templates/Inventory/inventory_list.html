@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Inventory List</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+        }
+
+        .page-container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        .content {
+            flex: 1;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #f3f4f6;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        a {
+            text-decoration: none;
+            padding: 5px 15px;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        a:hover {
+            opacity: 0.8;
+        }
+
+        a:nth-child(1) {
+            background-color: #FFEB3B;
+            color: #333;
+        }
+
+        a:nth-child(2) {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-container">
+        <div class="header">
+            Shopping Mall Management System
+        </div>
+
+        <div class="content">
+            <h1>Inventory List</h1>
+            <ul>
+                {% for inventory in inventories %}
+                <li>
+                    Store: {{ inventory.store.name }}<br>
+                    Product: {{ inventory.product.name }}<br>
+                    Quantity: {{ inventory.quantity }}<br>
+                    <a href="{% url 'update_inventory' inventory.id %}">Update</a>
+                    <a href="{% url 'delete_inventory' inventory.id %}">Delete</a>
+                </li>
+                {% empty %}
+                    <p>No inventories available.</p>
+                {% endfor %}
+            </ul>
+            <a href="{% url 'inventory_interface' %}" style="display: block; margin-top: 20px;">Back to Main Interface</a>
+        </div>
+
+        <div class="footer">
+            &copy; 2023 Shopping Mall Management System. All rights reserved.
+        </div>
+    </div>
+</body>
+
+</html>

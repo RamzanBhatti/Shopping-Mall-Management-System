@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Inventory Management</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5; /* soft background color for overall page */
+        }
+
+        .page-container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            max-width: 800px;  /* limit the max-width for better presentation on wide screens */
+            margin: 0 auto;  /* center the content horizontally */
+            background-color: white; /* white background for the main content */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* subtle shadow around the main content */
+        }
+
+        .header {
+            background-color: #2e86de; /* pleasant blue color */
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #e0e0e0;  /* subtle border */
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            background-color: #2e86de;
+            color: white;
+            transition: background-color 0.2s;
+        }
+
+        a:hover {
+            background-color: #2271b1; /* slightly darker blue for hover effect */
+        }
+
+        .footer {
+            background-color: #2e86de;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-top: 1px solid #e0e0e0;  /* subtle border */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-container">
+        <div class="header">
+            Shopping Mall Management System
+        </div>
+
+        <div class="content">
+            <h1>Inventory Management</h1>
+            <ul>
+                <li><a href="{% url 'inventory_list' %}">Inventory List</a></li>
+                <li><a href="{% url 'add_inventory' %}">Add Inventory</a></li>
+                <li><a href="{% url 'inventory_list' %}">Manage Inventory</a></li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            &copy; 2023 Shopping Mall Management System. All rights reserved.
+        </div>
+    </div>
+</body>
+
+</html>

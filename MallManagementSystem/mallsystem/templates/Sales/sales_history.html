@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sales History</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+        }
+
+        .page-container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        .content {
+            flex: 1;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        a {
+            text-decoration: none;
+            color: #4CAF50;
+            margin-top: 20px;
+            display: block;
+            text-align: center;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="page-container">
+        <div class="header">
+            Shopping Mall Sales History
+        </div>
+
+        <div class="content">
+            <h1>Sales History</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Product</th>
+                        <th>Customer</th>
+                        <th>Quantity</th>
+                        <th>Total Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for sale in sales %}
+                    <tr>
+                        <td>{{ sale.date }}</td>
+                        <td>{{ sale.product.name }}</td>
+                        <td>{{ sale.customer.name }}</td>
+                        <td>{{ sale.quantity }}</td>
+                        <td>{{ sale.total_price }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            
+            <a href="{% url 'sales_interface' %}">Back to Sales Management</a>
+        </div>
+
+        <div class="footer">
+            &copy; 2023 Shopping Mall Management System. All rights reserved.
+        </div>
+    </div>
+</body>
+
+</html>

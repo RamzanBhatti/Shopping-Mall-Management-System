@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Customer Management</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #e9eaec;
+        }
+
+        .page-container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            background-color: #FF8C00;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        .content {
+            flex: 1;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        a {
+            display: block;
+            background-color: #FF8C00;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: background-color 0.2s;
+        }
+
+        a:hover {
+            background-color: #FFA64D;
+        }
+
+        .footer {
+            background-color: #FF8C00;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-container">
+        <div class="header">
+            Shopping Mall Management System
+        </div>
+
+        <div class="content">
+            <h1>Customer Management</h1>
+            <a href="{% url 'add_customer' %}">Add New Customer</a>
+            <a href="{% url 'view_customers' %}">View All Customers</a>
+            <a href="{% url 'loyalty_program' %}">Loyalty Program</a>
+            {% for customer in customers %}
+               <a href="{% url 'customer_purchase_history' customer.id %}">Purchase History for {{ customer.name }}</a>
+            {% endfor %}
+        </div>
+
+        <div class="footer">
+            &copy; 2023 Shopping Mall Management System. All rights reserved.
+        </div>
+    </div>
+</body>
+
+</html>

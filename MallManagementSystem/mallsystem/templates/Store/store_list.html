@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Store Management</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+        }
+
+        .page-container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            background-color: #4CAF50; /* A vibrant green color for the header */
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        .content {
+            flex: 1;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #f3f4f6;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        a {
+            text-decoration: none;
+            padding: 5px 15px;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        a:hover {
+            opacity: 0.8;
+        }
+
+        a:nth-child(2) {
+            background-color: #f44336; /* Red color for delete */
+            color: white;
+        }
+
+        a:nth-child(1) {
+            background-color: #FFEB3B; /* Yellow color for update */
+            color: #333;
+        }
+
+        .footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-container">
+        <div class="header">
+            Shopping Mall Management System
+        </div>
+
+        <div class="content">
+            <h1>Stores List</h1>
+            <ul>
+                {% for store in stores %}
+                <li>
+                    {{ store.name }} 
+                    <a href="{% url 'update_store' store.id %}">Update</a>
+                    <a href="{% url 'delete_store' store.id %}">Delete</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="footer">
+            &copy; 2023 Shopping Mall Management System. All rights reserved.
+        </div>
+    </div>
+</body>
+
+</html>

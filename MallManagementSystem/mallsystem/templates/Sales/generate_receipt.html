@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Generate Receipt</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+        }
+
+        .page-container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        .content {
+            flex: 1;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        select, input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            text-decoration: none;
+            color: #4CAF50;
+            margin-top: 20px;
+            display: block;
+            text-align: center;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .receipt {
+            border: 2px solid #eee;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .receipt-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .receipt-content {
+            line-height: 1.5;
+        }
+
+        .total {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="page-container">
+        <div class="header">
+            Shopping Mall Receipt System
+        </div>
+
+        <div class="content">
+            <h1>Generate Receipt</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Generate Receipt</button>
+            </form>
+            
+            <!-- Display Receipt -->
+            <div class="receipt">
+                <div class="receipt-header">
+                    <h2>Shopping Mall Receipt</h2>
+                    <p>Date: {{ receipt.date }}</p>
+                </div>
+                <div class="receipt-content">
+                    {% for sale in receipt.sales.all %}
+                    <p>Product: {{ sale.product.name }} | Quantity: {{ sale.quantity }} | Total: {{ sale.total_price }}</p>
+                    {% endfor %}
+                    <p class="total">Total Amount: {{ receipt.total_amount }}</p>
+                </div>
+            </div>
+            
+            <a href="{% url 'sales_interface' %}">Back to Sales Management</a>
+        </div>
+
+        <div class="footer">
+            &copy; 2023 Shopping Mall Management System. All rights reserved.
+        </div>
+    </div>
+</body>
+
+</html>
